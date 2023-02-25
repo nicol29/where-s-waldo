@@ -1,0 +1,29 @@
+.pop-up {
+  display: flex;
+  flex-direction: column;
+  background-color: #292030;
+  gap: 10px;
+  width: fit-content;
+  padding: 10px;
+  padding-right: 15px;
+  border-radius: 5px;
+  color: white;
+  position: absolute;
+  top: 348px;
+  left: 123px;
+}
+
+.pop-up div {
+  display: flex;
+}
+
+.pop-up img {
+  align-self: center;
+  width: 50px;
+  height: auto;
+  border-radius: 100%;
+}
+
+.pop-up :last-child img {
+  transform: scale(.8);
+}

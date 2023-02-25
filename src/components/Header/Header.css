@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+}
+
+header {
+  background-color: #292030;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+header img {
+  width: 100px;
+  height: auto;
+  border-radius: 100%;
+}
