@@ -1,9 +1,9 @@
 import './PopUp.css';
 
-function PopUp () {
-  
+function PopUp ({ position }) {
+
   return (
-    <div className='pop-up'>
+    <div className='pop-up' style={{left: position.x, top: position.y}}>
       <div className='assassin-pick'>
         <img 
           src={require('../../images/assassins-creed.png')}

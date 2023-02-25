@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function App() {
   const [position, setPosition] = useState({});
-  const [clicked, setClicked] = useState(true);
+  const [clicked, setClicked] = useState(false);
 
   const handlePosition = (event) => {
     setPosition({
@@ -18,14 +18,19 @@ function App() {
     console.log(position.x, position.y);
   }
 
+  const handlePopUp = () => {
+    setClicked(!clicked);
+  }
+
   return (
     <div>
       <Header />
       <GameArea 
         handlePosition={handlePosition}
+        handlePopUp={handlePopUp}
         position={position}
       />
-      {clicked ? <PopUp /> : null}
+      {clicked ? <PopUp position={position}/> : null}
     </div>
   );
 }

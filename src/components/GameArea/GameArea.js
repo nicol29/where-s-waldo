@@ -1,6 +1,6 @@
 function GameArea (props) {
   return (
-    <div onMouseMove={props.handlePosition}>
+    <div onClick={props.handlePopUp} onMouseMove={props.handlePosition}>
       <img 
         src={require('../../images/wheres-waldo.jpg')}
         alt='Background Game Area'>

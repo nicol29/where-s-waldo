@@ -9,8 +9,6 @@
   border-radius: 5px;
   color: white;
   position: absolute;
-  top: 348px;
-  left: 123px;
 }
 
 .pop-up div {
@@ -26,4 +24,8 @@
 
 .pop-up :last-child img {
   transform: scale(.8);
+}
+
+.pop-up div:hover {
+  cursor: pointer;
 }
