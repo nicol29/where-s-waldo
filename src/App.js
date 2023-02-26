@@ -8,12 +8,22 @@ function App() {
   const [clicked, setClicked] = useState(false);
 
   const handlePopUp = (event) => {
+    const imageWidth = event.target.offsetWidth;
+
     setClicked(!clicked);
-    
-    setPosition({
-      x: event.pageX,
-      y: event.pageY
-    })
+
+    // Responsive placement of popup
+    if ((event.pageX + 182) > imageWidth) {
+      setPosition({
+        x: event.pageX - 182,
+        y: event.pageY
+      })
+    } else {
+      setPosition({
+        x: event.pageX,
+        y: event.pageY
+      })
+    }
   }
 
   const handleChoice = () => {

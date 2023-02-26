@@ -1,7 +1,9 @@
+import './GameArea.css'
+
 function GameArea (props) {
   return (
     <div onClick={props.handlePopUp}>
-      <img 
+      <img
         src={require('../../images/wheres-waldo.jpg')}
         alt='Background Game Area'>
       </img>
