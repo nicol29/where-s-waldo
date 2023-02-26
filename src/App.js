@@ -7,30 +7,30 @@ function App() {
   const [position, setPosition] = useState({});
   const [clicked, setClicked] = useState(false);
 
-  const handlePosition = (event) => {
+  const handlePopUp = (event) => {
+    setClicked(!clicked);
+    
     setPosition({
-      x: event.clientX,
-      y: event.clientY
+      x: event.pageX,
+      y: event.pageY
     })
-
-    // let headerHeight = document.querySelector('header').offsetHeight;
-
-    console.log(position.x, position.y);
   }
 
-  const handlePopUp = () => {
-    setClicked(!clicked);
+  const handleChoice = () => {
+    
   }
 
   return (
     <div>
       <Header />
       <GameArea 
-        handlePosition={handlePosition}
         handlePopUp={handlePopUp}
         position={position}
       />
-      {clicked ? <PopUp position={position}/> : null}
+      {clicked && 
+        <PopUp 
+          position={position}
+          handleChoice={handleChoice}/>}
     </div>
   );
 }
