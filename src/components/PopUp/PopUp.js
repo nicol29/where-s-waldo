@@ -3,7 +3,8 @@ import './PopUp.css';
 function PopUp ({ position, handleChoice }) {
   return (
     <div 
-      className='pop-up' style={{left: position.x, top: position.y}}>
+      className='pop-up' style={position.responsiveX ? 
+      {left: position.responsiveX, top: position.y} : {left: position.x, top: position.y}}>
       <div className='assassin' onClick={handleChoice}>
         <img 
           src={require('../../images/assassins-creed.png')}
