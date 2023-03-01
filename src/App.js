@@ -3,21 +3,8 @@ import GameArea from "./components/GameArea/GameArea";
 import PopUp from "./components/PopUp/PopUp";
 import { useState, useEffect } from "react";
 import { db } from "./firebase/firebase-config"
-import { collection, getDoc, doc } from "firebase/firestore" 
+import { getDoc, doc } from "firebase/firestore" 
 
-
-// const getCharacter = (character) => {
-//   const characterCollectionRef = doc(db, 'characters', 'kratos');
-
-//   const characterPosition = (async () => {
-//     let characterCoords = await getDoc(characterCollectionRef);
-
-//     if(characterCoords.exists()) console.log('lol')
-//     return characterCoords.data()
-//   })();
-
-//   return characterPosition;
-// }
 const getCharacter = async (character) => {
   const characterCollectionRef = doc(db, 'characters', character);
 
@@ -49,7 +36,7 @@ function App() {
       })
     } else {
       setPosition({
-        x: event.pageX ,
+        x: event.pageX,
         y: event.pageY
       })
     }
@@ -67,8 +54,18 @@ function App() {
 
     const verifyUserCoords = async () => {
       let coords = await getCharacter(divClicked);
+
+      let bgImage = document.querySelector('.wheres-waldo-bg');
+      let xClickedCoord = position.x / bgImage.clientWidth;
+      let yClickedCoord = position.y / bgImage.clientHeight;
+
+      if(
+        xClickedCoord > (coords.x - 0.02) && 
+        xClickedCoord < (coords.x + 0.02) &&
+        yClickedCoord > (coords.y - 0.02) &&
+        yClickedCoord < (coords.y + 0.02)) console.log(divClicked + ' found!')
     };
-    verifyUserCoords();
+    verifyUserCoords()
   }
 
   useEffect(() => {

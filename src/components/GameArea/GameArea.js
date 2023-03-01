@@ -5,7 +5,8 @@ function GameArea (props) {
     <div onClick={props.handlePopUp}>
       <img
         src={require('../../images/wheres-waldo.jpg')}
-        alt='Background Game Area'>
+        alt='Background Game Area'
+        className='wheres-waldo-bg'>
       </img>
     </div>
   )
