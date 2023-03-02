@@ -17,9 +17,12 @@ function App() {
   const [position, setPosition] = useState({});
   const [clicked, setClicked] = useState(false);
   const [foundCharacters, setFoundCharacters] = useState({
-    Assassin: false,
-    Kratos: false,
-    Sackboy: false
+    assassin: false,
+    assassinOpacity: 1,
+    kratos: false,
+    kratosOpacity: 1,
+    sackboy: false,
+    sackboyOpactiy: 1
   });
 
 
@@ -44,13 +47,8 @@ function App() {
 
   const handleChoice = (event) => {
     const divClicked = event.target.parentNode.className;
-    console.log(divClicked);
-    if(!foundCharacters.divClicked) {
-      setFoundCharacters({
-        ...foundCharacters, divClicked: true
-      })
-    }
 
+    setClicked(!clicked);
 
     const verifyUserCoords = async () => {
       let coords = await getCharacter(divClicked);
@@ -63,9 +61,16 @@ function App() {
         xClickedCoord > (coords.x - 0.02) && 
         xClickedCoord < (coords.x + 0.02) &&
         yClickedCoord > (coords.y - 0.02) &&
-        yClickedCoord < (coords.y + 0.02)) console.log(divClicked + ' found!')
+        yClickedCoord < (coords.y + 0.02)) markCharacterAsFound(divClicked);
     };
-    verifyUserCoords()
+    verifyUserCoords();
+  }
+
+  const markCharacterAsFound = (character) => {
+    setFoundCharacters({
+      ...foundCharacters, [character]: true, [character + 'Opacity']: 0.25
+    })
+    console.log(foundCharacters)
   }
 
   useEffect(() => {
@@ -74,11 +79,11 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <Header 
+        opacityValues={foundCharacters}/>
       <GameArea 
         handlePopUp={handlePopUp}
-        position={position}
-      />
+        position={position}/>
       {clicked && 
         <PopUp 
           position={position}

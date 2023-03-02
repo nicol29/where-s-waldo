@@ -1,22 +1,25 @@
 import './Header.css'
 
-function Header () {
+function Header ({ opacityValues }) {
   return (
     <header>
       <img 
         className='assassin-image'
         src={require('../../images/assassins-creed.png')}
-        alt='Assassin'>
+        alt='Assassin'
+        style={{opacity: opacityValues.assassinOpacity}}>
       </img>
       <img 
         className='kratos-image'
         src={require('../../images/kratos.png')}
-        alt='Kratos'>
+        alt='Kratos'
+        style={{opacity: opacityValues.kratosOpacity}}>
       </img>
       <img 
         className='sackboy-image'
         src={require('../../images/sackboy.png')}
-        alt='Sackboy'>
+        alt='Sackboy'
+        style={{opacity: opacityValues.sackboyOpacity}}>
       </img>
     </header>
   )
