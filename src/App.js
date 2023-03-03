@@ -16,16 +16,13 @@ const getCharacter = async (character) => {
 function App() {
   const [position, setPosition] = useState({});
   const [clicked, setClicked] = useState(false);
-  const [foundCharacters, setFoundCharacters] = useState({
-    assassin: false,
+  const [foundCharacters, setFoundCharacters] = useState([]);
+  const [opacityValues, setOpacityValues] = useState({
     assassinOpacity: 1,
-    kratos: false,
     kratosOpacity: 1,
-    sackboy: false,
     sackboyOpactiy: 1
-  });
-
-
+  })
+;
   const handlePopUp = (event) => {
     const imageWidth = event.target.offsetWidth;
 
@@ -67,20 +64,24 @@ function App() {
   }
 
   const markCharacterAsFound = (character) => {
-    setFoundCharacters({
-      ...foundCharacters, [character]: true, [character + 'Opacity']: 0.25
-    })
-    console.log(foundCharacters)
+    if(!foundCharacters.includes(character)) {
+      setFoundCharacters([
+        ...foundCharacters, `${character}`
+      ]);
+
+      setOpacityValues({
+        ...opacityValues, [character + 'Opacity']: 0.25
+      })
+    }
   }
 
   useEffect(() => {
-
   }, [])
 
   return (
     <div>
       <Header 
-        opacityValues={foundCharacters}/>
+        opacityValues={opacityValues}/>
       <GameArea 
         handlePopUp={handlePopUp}
         position={position}/>
@@ -88,6 +89,7 @@ function App() {
         <PopUp 
           position={position}
           handleChoice={handleChoice}/>}
+      {/* {foundCharacters.length &&} */}
     </div>
   );
 }
