@@ -1,6 +1,7 @@
+import { Timer } from '../Timer/Timer';
 import './Header.css'
 
-function Header ({ opacityValues }) {
+function Header ({ opacityValues, time }) {
   return (
     <header>
       <div className='character-images'>
@@ -24,7 +25,8 @@ function Header ({ opacityValues }) {
         </img>
       </div>
       <div className='timer'>
-        <p>00:00:00</p>
+        <Timer 
+        time={time}/>
       </div>
     </header>
   )

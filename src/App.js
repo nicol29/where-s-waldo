@@ -7,22 +7,22 @@ import { getDoc, doc } from "firebase/firestore"
 
 const getCharacter = async (character) => {
   const characterCollectionRef = doc(db, 'characters', character);
-
   const characterPosition = await getDoc(characterCollectionRef);
 
   return characterPosition.data();
 }
 
 function App() {
-  const [position, setPosition] = useState({});
   const [clicked, setClicked] = useState(false);
+  const [position, setPosition] = useState({});
   const [foundCharacters, setFoundCharacters] = useState([]);
   const [opacityValues, setOpacityValues] = useState({
     assassinOpacity: 1,
     kratosOpacity: 1,
     sackboyOpactiy: 1
-  })
-;
+  });
+  const [time, setTime] = useState(0);
+
   const handlePopUp = (event) => {
     const imageWidth = event.target.offsetWidth;
 
@@ -76,12 +76,16 @@ function App() {
   }
 
   useEffect(() => {
-  }, [])
+    setTimeout(() => {
+      setTime(time + 1);
+    }, 1000);
+  }, [time])
 
   return (
     <div>
       <Header 
-        opacityValues={opacityValues}/>
+        opacityValues={opacityValues}
+        time={time}/>
       <GameArea 
         handlePopUp={handlePopUp}
         position={position}/>
