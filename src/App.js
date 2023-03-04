@@ -1,6 +1,7 @@
 import Header from "./components/Header/Header";
 import GameArea from "./components/GameArea/GameArea";
 import PopUp from "./components/PopUp/PopUp";
+import HighScore from "./components/HighScore/HighScore";
 import { useState, useEffect } from "react";
 import { db } from "./firebase/firebase-config"
 import { getDoc, doc } from "firebase/firestore" 
@@ -76,10 +77,12 @@ function App() {
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      setTime(time + 1);
-    }, 1000);
-  }, [time])
+    if(foundCharacters.length < 3) {
+      setTimeout(() => {
+        setTime(time + 1);
+      }, 1000);
+    }
+  }, [time, foundCharacters])
 
   return (
     <div>
@@ -94,6 +97,7 @@ function App() {
           position={position}
           handleChoice={handleChoice}/>}
       {/* {foundCharacters.length &&} */}
+      <HighScore time={time}/>
     </div>
   );
 }
