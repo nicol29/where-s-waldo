@@ -26,8 +26,8 @@ function Table ({ userName }) {
           <th>Username</th>
           <th>Time</th>
         </tr>
-        {topTenScores.map((userScore, index) => (
-          <tr>
+        {topTenScores.map((userScore) => (
+          <tr className={userScore.data().username === userName ? 'you' : ''}>
             <td>{userScore.data().username}</td>
             <td>{formatTime(userScore.data().time)}</td>
           </tr>

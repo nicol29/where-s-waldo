@@ -25,7 +25,8 @@ function HighScore (props) {
   }
 
   return (
-    <div className="high-score-modal">
+    <div 
+      className="high-score-modal">
       <div className='congrats'>
         <h1>Congratulations!</h1>
         <h2>You found everyone.</h2>

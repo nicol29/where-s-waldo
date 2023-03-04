@@ -7,10 +7,13 @@
 
 .high-score-modal {
   background-color: #292030;
-  height: 500px;
+  height: 570px;
   width: 400px;
   border-radius: 10px;
   color: white;
+  position: fixed;
+  left: calc(50% - 200px);
+  top: calc(50% - 285px);
 }
 
 .high-score-modal h2 {
@@ -37,12 +40,24 @@ table {
   border-collapse: collapse;
 }
 
-th {
-  text-align: left;
+tr:nth-child(odd) {
+  background-color: #3e3149;
 }
 
-table 
+th {
+  text-align: left;
+  height: 30px;
+}
+
+tr {
+  height: 30px;
+}
 
 .congrats p {
   margin: 0;
+}
+
+.you td {
+  background-color: #a46b00;
+  font-weight: 900;
 }

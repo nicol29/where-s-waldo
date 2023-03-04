@@ -25,8 +25,8 @@ function Header ({ opacityValues, time }) {
         </img>
       </div>
       <div className='timer'>
-        {/* <Timer 
-        time={time}/> */}
+        <Timer 
+        time={time}/>
       </div>
     </header>
   )

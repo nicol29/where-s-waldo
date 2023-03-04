@@ -10,7 +10,8 @@ header {
   align-items: center;
   background-color: #292030;
   width: 100%;
-  gap: 10px
+  gap: 10px;
+  z-index: 2;
 }
 
 .character-images {
@@ -28,4 +29,8 @@ header img {
 header p {
   margin: 0;
   color: white;
+}
+
+.timer {
+  font-size: 1.3rem;
 }
