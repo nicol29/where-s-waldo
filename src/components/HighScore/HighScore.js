@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { formatTime } from '../Timer/Timer';
-import './HighScore.css';
 import { db } from '../../firebase/firebase-config';
 import { doc, setDoc } from 'firebase/firestore';
+import Table from '../Table/Table';
+import uniqid from 'uniqid';
+import './HighScore.css';
 
 function HighScore (props) {
   const elapsedTime = formatTime(props.time);
@@ -13,8 +15,9 @@ function HighScore (props) {
     setScoreSubmitted(true);
 
     const addToDB = async () => {
-      const highScoresCollectionRef = doc(db, 'highscores', userName);
+      const highScoresCollectionRef = doc(db, 'highscores', uniqid());
       await setDoc(highScoresCollectionRef, {
+        username: userName,
         time: props.time
       })
     }
@@ -24,7 +27,7 @@ function HighScore (props) {
   return (
     <div className="high-score-modal">
       <div className='congrats'>
-        <h1>Congratsulations!</h1>
+        <h1>Congratulations!</h1>
         <h2>You found everyone.</h2>
         <p className='time-amount'>Your time: {elapsedTime}</p>
       </div>
@@ -40,7 +43,7 @@ function HighScore (props) {
               Submit Score
             </button>  
           </div> :
-          null}
+          <Table userName={userName}/>}
       </div>
     </div>
   )

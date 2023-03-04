@@ -9,7 +9,7 @@ import { getDoc, doc } from "firebase/firestore"
 const getCharacter = async (character) => {
   const characterCollectionRef = doc(db, 'characters', character);
   const characterPosition = await getDoc(characterCollectionRef);
-
+  
   return characterPosition.data();
 }
 
