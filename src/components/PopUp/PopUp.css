@@ -9,8 +9,6 @@
   border-radius: 5px;
   color: white;
   position: absolute;
-  /* left: 57%;
-  top: 50%; */
 }
 
 .pop-up div {
@@ -30,4 +28,9 @@
 
 .pop-up div:hover {
   cursor: pointer;
+}
+
+.kratos p,
+.sackboy p {
+  width: 100%;
 }

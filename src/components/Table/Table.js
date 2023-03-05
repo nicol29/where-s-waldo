@@ -2,6 +2,7 @@ import { db } from '../../firebase/firebase-config';
 import { useEffect, useState } from 'react';
 import { getDocs, collection, query, orderBy, limit } from "firebase/firestore";
 import { formatTime } from '../Timer/Timer';
+import uniqid from 'uniqid';
 
 function Table ({ userName }) {
   const [topTenScores, setTopTenScores] = useState([]);
@@ -22,16 +23,20 @@ function Table ({ userName }) {
     <div className='leaderboard'>
       <p>Leaderboard:</p>
       <table>
-        <tr>
-          <th>Username</th>
-          <th>Time</th>
-        </tr>
-        {topTenScores.map((userScore) => (
-          <tr className={userScore.data().username === userName ? 'you' : ''}>
-            <td>{userScore.data().username}</td>
-            <td>{formatTime(userScore.data().time)}</td>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Time</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {topTenScores.map((userScore) => (
+            <tr className={userScore.data().username === userName ? 'you' : ''} key={uniqid()}>
+              <td>{userScore.data().username}</td>
+              <td>{formatTime(userScore.data().time)}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   )
