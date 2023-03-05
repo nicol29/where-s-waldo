@@ -42,7 +42,7 @@ function App() {
       })
     }
   }
-
+  
   const handleChoice = (event) => {
     const divClicked = event.target.parentNode.className;
     
